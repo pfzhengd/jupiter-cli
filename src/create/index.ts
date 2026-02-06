@@ -1,18 +1,21 @@
 
 import { Options } from '..'
 import { gitPathName, rootPathName, tempPathName } from '../config'
+import * as path from 'path'
 const fse = require('fs-extra')
 
 function changePackageJson (options:Options) {
   try {
     const { name, description, author } = options
-    const packageJson:any = fse.readJsonSync(`${tempPathName}/package.json`)
+    const packageJsonPath = path.join(tempPathName, 'package.json')
+    const packageJson:any = fse.readJsonSync(packageJsonPath)
     packageJson.name = name
     packageJson.description = description
     packageJson.author = author
-    fse.writeJSONSync(`${tempPathName}/package.json`, packageJson, { spaces: 4 })
+    fse.writeJSONSync(packageJsonPath, packageJson, { spaces: 4 })
   } catch (ex) {
-    throw new Error(ex)
+    const errorMsg = ex instanceof Error ? ex.message : String(ex)
+    throw new Error(`修改 package.json 失败: ${errorMsg}`)
   }
 }
 

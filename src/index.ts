@@ -1,4 +1,5 @@
 import inquirer from 'inquirer'
+import chalk from 'chalk'
 import { clone } from './clone'
 import template, { tempPathName } from './config'
 const packageJson = require('../../package.json')
@@ -8,7 +9,7 @@ export type Options = {
   name: string,
   description: string,
   author: string,
-  type: 'js'|'ts'|'web',
+  type: 'js'|'ts'|'web'|'monorepo',
   gitAddress: string
 }
 
@@ -31,6 +32,8 @@ export type Options = {
           const done = this.async()
           if (input.length > 0) {
             done(true)
+          } else {
+            done('项目名称不能为空')
           }
         }
       },
@@ -42,6 +45,8 @@ export type Options = {
           const done = this.async()
           if (input.length > 0) {
             done(true)
+          } else {
+            done('项目描述不能为空')
           }
         }
       },
@@ -53,6 +58,8 @@ export type Options = {
           const done = this.async()
           if (input.length > 0) {
             done(true)
+          } else {
+            done('作者名称不能为空')
           }
         }
       },
@@ -72,6 +79,10 @@ export type Options = {
           {
             name: 'Web模版，用于启动一个Web项目',
             value: 'web'
+          },
+          {
+            name: 'Monorepo模版，用于启动一个Monorepo多包项目',
+            value: 'monorepo'
           }
         ]
       }
@@ -89,6 +100,13 @@ export type Options = {
         case 'web':
           templateUrl = template.web
           break
+        case 'monorepo':
+          templateUrl = template.monorepo
+          break
+      }
+      if (!templateUrl) {
+        console.log(chalk.red('未找到对应的模板类型'))
+        return
       }
       clone(templateUrl, tempPathName, result)
     }

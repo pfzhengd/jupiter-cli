@@ -9,16 +9,22 @@ export function clone (repoAddress:string, targetPath:string, options:Options) {
   const log = info('正在下载模板。。。')
   clearTemp()
   const cmd = spawn('git', ['clone', repoAddress, targetPath], { stdio: 'inherit' })
-  cmd.on('close', (status:number, other:any) => {
+  cmd.on('close', (status:number) => {
     log.clear()
     if (status === 0) {
       console.log(chalk.green('下载模板成功。'))
-      createProject(options, rootPathName)
+      try {
+        createProject(options, rootPathName)
+      } catch (error) {
+        const errorMsg = error instanceof Error ? error.message : String(error)
+        console.log(chalk.redBright('创建项目时出现了错误:', errorMsg))
+      }
     } else {
-      console.log(chalk.redBright('下载模板时出现了错误', other))
+      console.log(chalk.redBright('下载模板时出现了错误，请检查网络或仓库地址是否正确'))
     }
   })
-  cmd.on('error', (errMsg) => {
-    console.log('error', errMsg)
+  cmd.on('error', (errMsg: Error) => {
+    log.clear()
+    console.log(chalk.redBright('执行 git clone 命令失败:', errMsg.message))
   })
 }
