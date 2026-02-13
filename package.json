@@ -1,6 +1,6 @@
 {
   "name": "@jupiterjs/jupiter-cli",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "启动项目的脚手架",
   "main": "lib/main/index.js",
   "types": "lib/types/index.d.ts",
