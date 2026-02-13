@@ -1,3 +1,21 @@
+# [0.3.0](https://github.com/pfzhengd/Jupiter-cli/compare/v0.2.0...v0.3.0) (2026-02-13)
+
+
+### Features
+
+* 实现 monorepo 仓库初始化能力 ([6b67af3](https://github.com/pfzhengd/Jupiter-cli/commit/6b67af345636d3f5d662c82d006cd650cad09f3c))
+
+
+
+# [0.2.0](https://github.com/pfzhengd/Jupiter-cli/compare/v0.1.1...v0.2.0) (2024-01-30)
+
+
+### Features
+
+* 支持 web 模版 ([943a33b](https://github.com/pfzhengd/Jupiter-cli/commit/943a33bb3769b342c82a4dcc6f2b5cb0dff0fc9d))
+
+
+
 ## [0.1.1](https://github.com/pfzhengd/Jupiter-cli/compare/v0.1.0...v0.1.1) (2024-01-19)
 
 
@@ -16,8 +34,8 @@
 
 ### Performance Improvements
 
-* 升级构建命令 ([e50e3ec](https://github.com/pfzhengd/Jupiter-cli/commit/e50e3ec908bdbbdd75fa283eaef365a94a300052))
 * 优化构建命令 ([bce3f6d](https://github.com/pfzhengd/Jupiter-cli/commit/bce3f6d5dd032901c3e0dbef558e5fdc38e66ae4))
+* 升级构建命令 ([e50e3ec](https://github.com/pfzhengd/Jupiter-cli/commit/e50e3ec908bdbbdd75fa283eaef365a94a300052))
 
 
 
@@ -26,8 +44,8 @@
 
 ### Bug Fixes
 
-* 清除模版中的 .git 目录 ([af2d5a5](https://github.com/pfzhengd/Jupiter-cli/commit/af2d5a5b6c9ba4d3ec80043bd3b12dd5dff45db8))
 * 下载项目模版时，有几率下载不成功。 ([94b285c](https://github.com/pfzhengd/Jupiter-cli/commit/94b285c84cd125d9c018b8db8059d1eb39a266e0))
+* 清除模版中的 .git 目录 ([af2d5a5](https://github.com/pfzhengd/Jupiter-cli/commit/af2d5a5b6c9ba4d3ec80043bd3b12dd5dff45db8))
 
 
 
